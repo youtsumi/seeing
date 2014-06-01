@@ -131,8 +131,8 @@ if __name__ == "__main__":
 		continue
 	    fwhm, dfwhm = main(filename)
 	    jdarray.append(pyfits.open(filename)[0].header["JD"])
-	    fwhmarray.append(fwhm*pixelscale)
-	    dfwhmarray.append(dfwhm*pixelscale)
+	    fwhmarray.append(fwhm)
+	    dfwhmarray.append(dfwhm)
 	    count += 1
 	    if count == 10:
 		continue
