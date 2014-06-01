@@ -15,3 +15,8 @@ SExtractor の stellaritiy の判定には PSF size が必要なので，
 拡張して行こうと思っていますが，どこまでやるだろうか．
 
 うつみ
+
+![example](http://hinotori.hiroshima-u.ac.jp/ActivityReport/20140530/20140530-405obj.png)
+![example](http://hinotori.hiroshima-u.ac.jp/ActivityReport/20140530/timeseries.png)
+
+http://hinotori.hiroshima-u.ac.jp/ActivityReport/20140530/
