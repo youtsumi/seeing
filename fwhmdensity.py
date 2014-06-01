@@ -48,7 +48,7 @@ class sextractorresult:
 	y =self.stars["Y_IMAGE"]
 	fwhm = self.stars["FWHM_IMAGE"]*pixelscale
 	pylab.hexbin( \
-		x, y, fwhm, \
+		x, y, numpy.flipud(fwhm), \
 		gridsize=gridsize, \
 		vmin=fwhmmin, \
 		vmax=fwhmmax
@@ -64,7 +64,7 @@ class sextractorresult:
 	y =self.stars["Y_IMAGE"]
 	ellipticity = self.stars["ELLIPTICITY"]*pixelscale
 	pylab.hexbin( \
-		x, y, ellipticity, \
+		x, y, numpy.flipud(ellipticity), \
 		gridsize=gridsize, \
 		vmin=0.0, \
 		vmax=0.3
