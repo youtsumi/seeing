@@ -23,6 +23,6 @@ class sextractorresult:
 	    
 	self.objects=numpy.loadtxt(self.filepath.replace(suffix,".cat"), \
 	    dtype={'names': headers, 'formats': formats})
-	self.selectstars()
+
 
 
