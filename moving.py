@@ -93,7 +93,7 @@ def main():
     
     pylab.subplot(211)
     pylab.xlabel("MJD")
-    pylab.ylabel("Poinging differences in arcsec/s")
+    pylab.ylabel("Pointing differences in arcsec/s")
     rms = numpy.sqrt(qmeanarray**2+umeanarray**2)*pixscale
     erms = numpy.sqrt(qsigarray**2+usigarray**2)*pixscale
     pylab.errorbar(jdarray,rms,erms,fmt="o")
