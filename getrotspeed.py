@@ -18,7 +18,7 @@ if __name__ == "__main__":
     pylab.pcolor(AZ/rad2deg,(90-EL),vrotspeed(AZ-90,EL))
     pylab.colorbar()
     pylab.xlim(pi/4.,(2.+1/4)*pi)
-    pylab.xticks((0,pi/2,2*pi/2,3*pi/2),("E","N","W","S"))
+    pylab.xticks((0,pi/2,2*pi/2,3*pi/2),("E(90)","N(180)","W(-90)","S(0)"))
     pylab.grid()
     pylab.title("Field rotation velocity map [arcsec/s]")
     pylab.savefig("FieldRotation.png")
