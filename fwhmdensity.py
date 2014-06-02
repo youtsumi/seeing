@@ -78,11 +78,13 @@ def main(filename):
     echosys("sex %s -CATALOG_NAME %s" \
 	% ( filename, filename.replace(suffix,".cat")) )
     mysex.loaddata()
+    mysex.selectstars()
     candidatefwhm = numpy.median(mysex.objects["FWHM_IMAGE"])*pixelscale
     print candidatefwhm
     echosys("sex %s -CATALOG_NAME %s -SEEING_FWHM %.1lf" \
 	% ( filename, filename.replace(suffix, ".cat"), candidatefwhm) )
     mysex.loaddata()
+    mysex.selectstars()
     candidatefwhm = numpy.median(mysex.objects["FWHM_IMAGE"])*pixelscale
     print candidatefwhm
     pylab.subplot(221)
