@@ -4,8 +4,8 @@ import re
 import pylab
 import datetime
 import pyfits
+import sexparser
 
-sharp = re.compile("^#")
 pixelscale=0.675
 fwhmmin = 0.0
 fwhmmax = 4.0
@@ -15,27 +15,11 @@ peakintensitymax = 30000
 peakintensitymin = 300
 starcondition = 0.95
 magkey = "MAG_AUTO"
-suffix = ".fit"
+suffix = sexparser.suffix
 
-class sextractorresult:
+class showQA(sexparser.sextractorresult):
     def __init__(self, filepath ):
-	self.filepath = filepath
-
-    def loaddata(self):
-	headers = []
-
-	# here must be fast to use "for loop" rather than filter or something
-	# the header usually has several lines
-	for line in open(self.filepath.replace(suffix,".cat")):
-	    if sharp.match(line) is None:
-		break
-	    headers.append(line[6:22].replace(" ",""))
-
-	formats = ["f4"] * len(headers) 
-	    
-	self.objects=numpy.loadtxt(self.filepath.replace(suffix,".cat"), \
-	    dtype={'names': headers, 'formats': formats})
-	self.selectstars()
+	sexparser.sextractorresult.__init__(self,filepath)
 
     def selectstars(self):
 	self.stars=self.objects[numpy.where(self.objects["CLASS_STAR"]>starcondition)]
@@ -90,7 +74,7 @@ class sextractorresult:
 
 def main(filename):
     pylab.clf()
-    mysex = sextractorresult(filename)
+    mysex = showQA(filename)
     echosys("sex %s -CATALOG_NAME %s" \
 	% ( filename, filename.replace(suffix,".cat")) )
     mysex.loaddata()
@@ -135,8 +119,10 @@ if __name__ == "__main__":
 	    dfwhmarray.append(dfwhm)
 	    count += 1
 	    if count == 10:
+		break
 		continue
 	except:
+	    raise
 	    pass
 
     pylab.clf()
